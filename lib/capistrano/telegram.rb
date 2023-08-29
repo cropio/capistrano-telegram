@@ -24,7 +24,7 @@ module Capistrano
     private 
     def send_to_telegram(message)
       ::Telegram::Bot::Client.run(@telegram_bot_key) do |bot|
-        bot.api.send_message(chat_id: @telegram_chat_id, text: message)
+        bot.api.send_message(message.merge(chat_id: @telegram_chat_id))
       end
     end
   
