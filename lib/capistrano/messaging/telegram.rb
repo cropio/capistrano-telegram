@@ -8,39 +8,18 @@ module Capistrano
       extend Forwardable
       def_delegators :env, :fetch
 
-      def payload_for_updating
-        {
-          text: "#{deployer} has started deploying branch #{branch} of #{application} to #{stage}"
-        }
-      end
 
-      def payload_for_reverting
-        {
-          text: "#{deployer} has started rolling back branch #{branch} of #{application} to #{stage}"
-        }
-      end
-
-      def payload_for_updated
-        {
-          text: "#{deployer} has finished deploying branch #{branch} of #{application} to #{stage}"
-        }
-      end
-
-      def payload_for_reverted
-        {
-          text: "#{deployer} has finished rolling back branch of #{application} to #{stage}"
-        }
-      end
-
-      def payload_for_failed
-        {
-          text: "#{deployer} has failed to #{deploying? ? 'deploy' : 'rollback'} branch #{branch} of #{application} to #{stage}"
-        }
-      end
+      DEFAULT_MESSAGES = {
+          updating: "#{deployer} has started deploying branch #{branch} of #{application} to #{stage}",
+          reverting: "#{deployer} has started rolling back branch #{branch} of #{application} to #{stage}",
+          updated: "#{deployer} has finished deploying branch #{branch} of #{application} to #{stage}",
+          reverted: "#{deployer} has finished rolling back branch of #{application} to #{stage}",
+          failed: "#{deployer} has failed to #{deploying? ? 'deploy' : 'rollback'} branch #{branch} of #{application} to #{stage}"
+      }
 
       def payload_for(action)
-        method = "payload_for_#{action}"
-        respond_to?(method) && send(method)
+        text = fetch("message_for_#{action}".to_sym) || DEFAULT_MESSAGES[action]
+        { text: text, parse_mode: 'markdown' }
       end
 
     end
