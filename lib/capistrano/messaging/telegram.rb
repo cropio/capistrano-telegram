@@ -18,24 +18,36 @@ module Capistrano
 
       private
 
+      def start_ico
+        "\u{1F6A2} \u{1F6A2} \u{1F6A2}"
+      end
+
+      def finish_ico
+        "\u{2705} \u{2705} \u{2705}"
+      end
+
+      def fail_ico
+        "\u{1F631} \u{1F631} \u{1F631}"
+      end
+
       def message_for_updating
-        "\u{1F6A2} \u{1F6A2} \u{1F6A2} #{deployer} has started deploying branch #{branch} of #{application} to *#{stage}*"
+        "#{start_ico} #{deployer} has started deploying branch #{branch} of #{application} to #{stage}"
       end
 
       def message_for_reverting
-        "#{deployer} has started rolling back branch #{branch} of #{application} to *#{stage}*"
+        "#{deployer} has started rolling back branch #{branch} of #{application} to #{stage}"
       end
 
       def message_for_updated
-        "\u{2705} \u{2705} \u{2705} #{deployer} has finished deploying branch #{branch} of #{application} to *#{stage}*"
+        "#{finish_ico} #{deployer} has finished deploying branch #{branch} of #{application} to #{stage}"
       end
 
       def message_for_reverted
-        "#{deployer} has finished rolling back branch of #{application} to *#{stage}*"
+        "#{deployer} has finished rolling back branch of #{application} to #{stage}"
       end
 
       def message_for_failed
-        "\u{1F631} \u{1F631} \u{1F631} #{deployer} has failed to #{deploying? ? 'deploy' : 'rollback'} branch #{branch} of #{application} to *#{stage}*"
+        "#{fail_ico} #{deployer} has failed to #{deploying? ? 'deploy' : 'rollback'} branch #{branch} of #{application} to #{stage}"
       end
     end
   end

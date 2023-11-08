@@ -1,7 +1,7 @@
 module Capistrano
   module Messaging
     module Helpers
-      
+
       def icon_emoji
         options.fetch(:icon_emoji, nil)
       end
@@ -12,15 +12,15 @@ module Capistrano
       end
 
       def branch
-        fetch(:branch)
+        "*#{fetch(:branch, "unknown branch")}*"
       end
 
       def application
         fetch(:application)
       end
 
-      def stage(default = 'an unknown stage')
-        fetch(:stage, default)
+      def stage(default = "an unknown stage")
+        "*#{fetch(:stage, default)}*"
       end
 
       #
@@ -32,6 +32,6 @@ module Capistrano
         `ps -p #{$$} -o etime=`.strip
       end
 
-    end        
+    end
   end
 end
