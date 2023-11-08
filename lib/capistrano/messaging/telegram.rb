@@ -30,12 +30,16 @@ module Capistrano
         "\u{1F631} \u{1F631} \u{1F631}"
       end
 
+      def revert_ico
+        "\u{27B0} \u{27B0} \u{27B0}"
+      end
+
       def message_for_updating
         "#{start_ico} #{deployer} has started deploying branch #{branch} of #{application} to #{stage}"
       end
 
       def message_for_reverting
-        "#{deployer} has started rolling back branch #{branch} of #{application} to #{stage}"
+        "#{revert_ico} #{deployer} has started rolling back branch #{branch} of #{application} to #{stage}"
       end
 
       def message_for_updated
@@ -43,7 +47,7 @@ module Capistrano
       end
 
       def message_for_reverted
-        "#{deployer} has finished rolling back branch of #{application} to #{stage}"
+        "#{finish_ico} #{deployer} has finished rolling back branch of #{application} to #{stage}"
       end
 
       def message_for_failed
