@@ -7,7 +7,9 @@ module Capistrano
       end
 
       def deployer
-        default = ENV['USER'] || ENV['USERNAME']
+        git_name = `git config --global --get user.name`.chomp
+
+        default = ENV['USER'] || ENV['USERNAME'] || git_name
         fetch(:local_user, default)
       end
 
