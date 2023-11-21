@@ -14,7 +14,7 @@ module Capistrano
       end
 
       def branch
-        "*#{fetch(:branch, "unknown")}*"
+        "`#{fetch(:branch, "unknown")}`"
       end
 
       def branch_with_rev
