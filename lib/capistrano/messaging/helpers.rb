@@ -14,7 +14,27 @@ module Capistrano
       end
 
       def branch
-        "*#{fetch(:branch, "unknown branch")}*"
+        "*#{fetch(:branch, "unknown")}*"
+      end
+
+      def branch_with_rev
+        "`#{fetch(:branch, "unknown")}` rev. *<#{link_rev}|#{short_rev}>*"
+      end
+
+      def git_rev
+        `git rev-parse origin/#{branch}`.strip!
+      end
+
+      def short_rev
+        git_rev[0..6]
+      end
+
+      def link_rev
+        "https://github.com/#{repo_path}/commit/#{git_rev}"
+      end
+
+      def repo_path
+        repo_url.gsub(/(\Agit@github\.com:|\.git$)/, "")
       end
 
       def application

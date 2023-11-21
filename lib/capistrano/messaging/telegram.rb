@@ -35,11 +35,11 @@ module Capistrano
       end
 
       def message_for_updating
-        "#{start_ico} #{deployer} has started deploying branch #{branch} of #{application} to #{stage}"
+        "#{start_ico} #{deployer} has started deploying branch #{branch_with_rev} of #{application} to #{stage}"
       end
 
       def message_for_reverting
-        "#{revert_ico} #{deployer} has started rolling back branch #{branch} of #{application} to #{stage}"
+        "#{revert_ico} #{deployer} has started rolling back branch #{branch_with_rev} of #{application} to #{stage}"
       end
 
       def message_for_updated
