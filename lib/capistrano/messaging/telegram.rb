@@ -34,12 +34,16 @@ module Capistrano
         "\u{27B0} \u{27B0} \u{27B0}"
       end
 
+      # TODO: fix branch_with_rev
+      # now text wrong see below
+      # vadym has started deploying branch master rev. <https://github.com/syngenta-digital/fullstack-rails-cwo/commit/origin/master|origin/> of cropio to production
+
       def message_for_updating
-        "#{start_ico} #{deployer} has started deploying branch #{branch_with_rev} of #{application} to #{stage}"
+        "#{start_ico} #{deployer} has started deploying branch #{branch} of #{application} to #{stage}"
       end
 
       def message_for_reverting
-        "#{revert_ico} #{deployer} has started rolling back branch #{branch_with_rev} of #{application} to #{stage}"
+        "#{revert_ico} #{deployer} has started rolling back branch #{branch} of #{application} to #{stage}"
       end
 
       def message_for_updated
