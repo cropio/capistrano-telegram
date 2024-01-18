@@ -39,7 +39,7 @@ module Capistrano
       # vadym has started deploying branch master rev. <https://github.com/syngenta-digital/fullstack-rails-cwo/commit/origin/master|origin/> of cropio to production
 
       def message_for_updating
-        "#{start_ico} #{deployer} has started deploying branch #{branch} of #{application} to #{stage}"
+        "#{start_ico} #{deployer} has started deploying branch #{branch_with_rev} of #{application} to #{stage}"
       end
 
       def message_for_reverting
