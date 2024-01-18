@@ -17,16 +17,17 @@ module Capistrano
 
       # vadym has started deploying branch master rev. <https://github.com/syngenta-digital/fullstack-rails-cwo/commit/origin/master|origin/> of cropio to production
       def branch_with_rev
-        # "`#{fetch(:branch, "unknown")}` rev. *<#{link_rev}|#{short_rev}>*"
+        "`#{fetch(:branch, "unknown")}` rev. *<#{link_rev}|#{short_rev}>*"
 
-        branch_name = fetch(:branch, "unknown")
-        git_rev = `git rev-parse origin/#{branch_name}`.strip!
+        # branch_name = fetch(:branch, "unknown")
+        # git_rev = `git rev-parse origin/#{branch_name}`.strip!
+        # link_rev = "https://github.com/#{repo_path}/commit/#{git_rev}"
 
-        "`#{branch_name}` rev. #{git_rev}"
+        # "`#{branch_name}` rev. #{link_rev}"
       end
 
       def git_rev
-        `git rev-parse origin/#{branch}`.strip!
+        `git rev-parse origin/#{fetch(:branch, "unknown")}`.strip!
       end
 
       def short_rev
