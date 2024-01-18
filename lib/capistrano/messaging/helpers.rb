@@ -15,12 +15,8 @@ module Capistrano
         "`#{fetch(:branch, "unknown")}`"
       end
 
-      def branch_with_rev
-        "`#{fetch(:branch, "unknown")}` rev. *<#{link_rev}|#{short_rev}>*"
-      end
-
       def git_rev
-        `git rev-parse origin/#{branch}`.strip!
+        `git rev-parse origin/#{fetch(:branch, "unknown")}`.strip!
       end
 
       def short_rev
