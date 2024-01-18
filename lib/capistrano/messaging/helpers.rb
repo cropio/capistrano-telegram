@@ -15,8 +15,9 @@ module Capistrano
         "`#{fetch(:branch, "unknown")}`"
       end
 
+      # vadym has started deploying branch master rev. <https://github.com/syngenta-digital/fullstack-rails-cwo/commit/origin/master|origin/> of cropio to production
       def branch_with_rev
-        "`#{fetch(:branch, "unknown")}` rev. *<#{link_rev}|#{short_rev}>*"
+        "`#{fetch(:branch, "unknown")}` rev. *<`#{link_rev}`|`#{short_rev}`>*"
       end
 
       def git_rev
