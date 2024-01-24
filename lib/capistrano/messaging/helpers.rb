@@ -19,6 +19,14 @@ module Capistrano
         `git rev-parse origin/#{fetch(:branch, "unknown")}`.strip!
       end
 
+      def git_pr_msg
+        `git show --pretty=format:"%s" -s "#{short_rev}"`
+      end
+
+      def git_pr_link
+        "[#{git_pr_msg}](#{link_rev})"
+      end
+
       def short_rev
         git_rev[0..6]
       end
