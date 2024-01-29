@@ -36,7 +36,7 @@ module Capistrano
 
       def message_for_updating
         "#{start_ico} #{deployer} started deploying branch " \
-        "#{branch} of #{application} to #{stage} rev. #{link_rev}"
+        "#{branch} of #{application} to #{stage} rev. #{git_pr_link}"
       end
 
       def message_for_reverting
